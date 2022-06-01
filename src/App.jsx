@@ -10,6 +10,11 @@ function App() {
 	const [nouns, setNouns] = useState([]);
 	const [choice, setChoice] = useState('hide');
 
+	const Button = styled.button`
+		background-color: ${(props) =>
+			props.mode === 'selected' ? 'green' : '#eee'};
+	`;
+
 	useEffect(() => {
 		(async () => {
 			const _nouns = (await axios.get(url)).data;
@@ -23,10 +28,30 @@ function App() {
 			<h1>German Article Practice</h1>
 
 			<div className="buttons">
-				<button onClick={() => setChoice('der')}>der</button>
-				<button onClick={() => setChoice('die')}>die</button>
-				<button onClick={() => setChoice('das')}>das</button>
-				<button onClick={() => setChoice('hide')}>hide</button>
+				<Button
+					onClick={() => setChoice('der')}
+					mode={choice === 'der' ? 'selected' : 'unselected'}
+				>
+					der
+				</Button>
+				<Button
+					onClick={() => setChoice('die')}
+					mode={choice === 'die' ? 'selected' : 'unselected'}
+				>
+					die
+				</Button>
+				<Button
+					onClick={() => setChoice('das')}
+					mode={choice === 'das' ? 'selected' : 'unselected'}
+				>
+					das
+				</Button>
+				<Button
+					onClick={() => setChoice('hide')}
+					mode={choice === 'hide' ? 'selected' : 'unselected'}
+				>
+					hide
+				</Button>
 			</div>
 
 			<div className="nouns">
