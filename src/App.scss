@@ -4,6 +4,31 @@ body {
 	padding: 0 20px;
 
 	h1 {
-		color: rgb(226, 226, 151);
+		color: #aaa;
+	}
+
+			.buttons {
+			padding: 0 0 20px 0;
+
+			button {
+				font-size: 1.5rem;
+				margin-right: 10px;
+				padding: 5px;
+				width: 100px;
+			}
+		}	
+
+	.nouns {
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(5, 1fr);
+		grid-column-gap: 2px;
+		grid-row-gap: 2px;
+
+		.noun {
+			background-color: #444;
+			color: #eee;
+			padding: 5px;
+		}
 	}
 }
