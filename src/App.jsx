@@ -15,6 +15,13 @@ function App() {
 			props.mode === 'selected' ? 'green' : '#eee'};
 	`;
 
+	const Noun = styled.div`
+		background-color: ${(props) =>
+			props.mode === 'selected' ? 'green' : '#444'};
+		color: ${(props) => (props.mode === 'selected' ? 'white' : '#777')};
+		padding: 5px;
+	`;
+
 	useEffect(() => {
 		(async () => {
 			const _nouns = (await axios.get(url)).data;
@@ -57,9 +64,16 @@ function App() {
 			<div className="nouns">
 				{nouns.map((noun, index) => {
 					return (
-						<div className="noun">
-							{noun.article} {noun.singular}
-						</div>
+						<Noun
+							mode={
+								choice === noun.article
+									? 'selected'
+									: 'unselected'
+							}
+						>
+							{choice === noun.article && <>{noun.article}</>}{' '}
+							{noun.singular}
+						</Noun>
 					);
 				})}
 			</div>
